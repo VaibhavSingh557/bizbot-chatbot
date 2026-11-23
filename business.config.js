@@ -17,6 +17,7 @@ export default {
     description:
       "Family dental clinic in Leeds offering check-ups, hygiene, whitening, braces and emergency care.",
     address: "14 Park Row, Leeds LS1 5HD",
+    timezone: "Europe/London",   // lets the bot say whether you are open right now
     phone: "+44 113 000 0000",
     email: "hello@sunrisedental.example",
     website: "https://sunrisedental.example",
