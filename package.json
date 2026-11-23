@@ -1,6 +1,6 @@
 {
   "name": "bizbot",
-  "version": "1.2.0",
+  "version": "1.1.0",
   "description": "Customisable AI chatbot for business websites and WhatsApp",
   "type": "module",
   "private": true,
