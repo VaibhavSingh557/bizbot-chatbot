@@ -31,6 +31,7 @@ export default {
       { name: "Custom tools and automation", price: "Quoted per project", details: "Small custom software to save time on repeated work" },
     ],
     faqs: [
+      { q: "What have you built?", a: "Projects include BizBot, a customizable AI chatbot for websites and WhatsApp (live demo: https://bizbot-chatbot.onrender.com), micro-transformer, a small Transformer language model written from scratch in NumPy, and neural-playground, a browser demo for exploring neural networks. All of it is on GitHub: https://github.com/VaibhavSingh557" },
       { q: "How do I get a quote?", a: "Tell us what you need through the Leave your details form in this chat. Include your name, a phone number or email, and a short description of the project." },
       { q: "Can the chatbot be customised for my business?", a: "Yes. The bot is set up with your services, prices, opening hours and FAQs, and it uses your brand color." },
       { q: "Does the chatbot work on WhatsApp too?", a: "Yes. The same bot can answer customers on your website and on WhatsApp." },
