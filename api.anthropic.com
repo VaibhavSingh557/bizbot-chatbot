@@ -1,0 +1,32 @@
+# Copy this file to .env and fill it in. Never commit .env.
+
+PORT=3000
+
+# --- AI provider -------------------------------------------------------
+# anthropic        -> Claude (api.anthropic.com)
+# openai           -> OpenAI, or any OpenAI-compatible API (OpenRouter, Groq, Together...)
+AI_PROVIDER=anthropic
+AI_API_KEY=
+AI_MODEL=claude-sonnet-5-5
+# Only for AI_PROVIDER=openai. Examples:
+#   https://api.openai.com/v1   (default)
+#   https://openrouter.ai/api/v1
+AI_BASE_URL=
+
+# --- Website widget ----------------------------------------------------
+# Comma-separated list of sites allowed to call the chat API.
+# Use * only while testing.
+ALLOWED_ORIGINS=http://localhost:3000
+
+# Optional: every captured lead is also POSTed here (Zapier, Make, Slack, n8n...)
+LEAD_WEBHOOK_URL=
+
+# Set to 1 when running behind a proxy such as Render, Railway or Nginx
+TRUST_PROXY=0
+
+# --- WhatsApp Cloud API (optional) --------------------------------------
+WHATSAPP_TOKEN=
+WHATSAPP_PHONE_NUMBER_ID=
+WHATSAPP_VERIFY_TOKEN=change-me-to-a-random-string
+# From Meta app settings > Basic. Used to verify that webhooks really come from Meta.
+WHATSAPP_APP_SECRET=
