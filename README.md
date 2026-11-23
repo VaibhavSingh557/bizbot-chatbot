@@ -27,7 +27,7 @@ Edit `business.config.js`. This is the only file that changes per client:
 | Section | What it controls |
 | --- | --- |
 | `brand` | Name, colour, greeting, quick-reply buttons in the widget |
-| `business` | Address, phone, hours, services and prices, FAQs, policies |
+| `business` | Address, phone, timezone, hours, services and prices, FAQs, policies |
 | `bot` | Bot name, tone, extra rules, what to say when it does not know |
 | `limits` | Memory length, max message size, rate limit |
 
@@ -68,6 +68,20 @@ Any Node host works (Render, Railway, Fly.io, a VPS).
 - Set `TRUST_PROXY=1` when the host sits behind a proxy
 - Leads are written to `data/leads.jsonl`. Many hosts wipe local files on redeploy, so set `LEAD_WEBHOOK_URL` for anything important.
 
+## 6. See your leads
+
+Set `ADMIN_TOKEN` to a long random value, then open:
+
+```
+https://YOUR-SERVER/admin/leads?token=YOUR_TOKEN
+```
+
+You get a simple table, newest first, that works on a phone. Leave `ADMIN_TOKEN` empty to keep the page switched off. Do not share the link.
+
+## One-click deploy on Render
+
+This repo includes `render.yaml`. In Render choose **New**, then **Blueprint**, pick the repo, and it fills in the settings. You only paste your AI key.
+
 ## How it fits together
 
 ```
@@ -92,6 +106,8 @@ WhatsApp        -> POST /webhook  --/
 - Set `WHATSAPP_APP_SECRET` in production so fake webhook calls are rejected.
 - Messages are limited in size and each IP is rate limited.
 - Conversations are kept in memory only and are not written to disk. Tell clients which provider processes their customers' messages and check it fits their privacy policy.
+
+See `CHANGELOG.md` for what changed in each version.
 
 ## Ideas for extending it
 
