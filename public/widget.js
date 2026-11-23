@@ -121,8 +121,12 @@
     var input = h("input", { type: "text", placeholder: "Type your message", "aria-label": "Your message", maxlength: "1000" });
     var send = h("button", { class: "send", type: "button", text: "Send" });
     var busy = false;
+    var saved = [];
+    try { saved = JSON.parse(sessionStorage.getItem("bizbot_log") || "[]"); } catch (e) {}
+    function persist() { try { sessionStorage.setItem("bizbot_log", JSON.stringify(saved.slice(-40))); } catch (e) {} }
 
-    function addMsg(cls, text) {
+    function addMsg(cls, text, replay) {
+      if (!replay && cls !== "err") { saved.push({ cls: cls, text: text }); persist(); }
       var m = h("div", { class: "m " + cls });
       linkify(m, text);
       log.appendChild(m);
@@ -143,7 +147,12 @@
         .then(function () { busy = false; send.disabled = false; input.focus(); });
     }
 
-    addMsg("bot", cfg.greeting);
+    if (saved.length) {
+      saved.forEach(function (m) { addMsg(m.cls, m.text, true); });
+      chips.style.display = "none";
+    } else {
+      addMsg("bot", cfg.greeting);
+    }
     (cfg.quickReplies || []).forEach(function (q) {
       chips.appendChild(h("button", { class: "chip", type: "button", text: q, onclick: function () { ask(q); } }));
     });
@@ -219,4 +228,4 @@
     }
   }
 })();
-  
+          
