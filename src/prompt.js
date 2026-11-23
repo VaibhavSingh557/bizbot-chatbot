@@ -1,6 +1,6 @@
 // Turns business.config.js into the instructions the AI follows.
 
-export function buildSystemPrompt(config) {
+export function buildSystemPrompt(config, now = new Date()) {
   const { brand, business: b, bot } = config;
   const lines = [];
 
@@ -9,6 +9,8 @@ export function buildSystemPrompt(config) {
   lines.push("Reply in the same language the customer writes in.");
   lines.push("");
   lines.push("BUSINESS FACTS (the only source of truth):");
+  const clock = businessClock(b.timezone, now);
+  if (clock) lines.push(`Current date and time at the business: ${clock}. Use it to say whether the business is open right now, but never promise availability.`);
   if (b.description) lines.push(`About: ${b.description}`);
   if (b.address) lines.push(`Address: ${b.address}`);
   if (b.phone) lines.push(`Phone: ${b.phone}`);
@@ -36,4 +38,17 @@ export function buildSystemPrompt(config) {
   for (const r of bot.rules ?? []) lines.push(`- ${r}`);
 
   return lines.join("\n");
+}
+
+// "Monday, 24 November 2026, 14:35" in the business's own timezone.
+function businessClock(timeZone, now) {
+  if (!timeZone) return "";
+  try {
+    return new Intl.DateTimeFormat("en-GB", {
+      timeZone, weekday: "long", day: "numeric", month: "long", year: "numeric",
+      hour: "2-digit", minute: "2-digit", hour12: false,
+    }).format(now);
+  } catch {
+    return ""; // unknown timezone name: skip rather than crash
+  }
 }
