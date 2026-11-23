@@ -1,56 +1,59 @@
 // =========================================================================
 //  EDIT THIS FILE FOR EACH CLIENT. Nothing else needs to change.
 //  The bot only answers from what you write here, so keep it accurate.
+//  Delete or change anything that is not true for your business.
 // =========================================================================
 
 export default {
   // What visitors see in the website widget
   brand: {
-    name: "Sunrise Dental",
-    color: "#0f766e",            // launcher, header and customer bubbles
-    greeting: "Hi, welcome to Sunrise Dental. How can I help you today?",
-    quickReplies: ["Book an appointment", "Opening hours", "Prices", "Where are you?"],
+    name: "Vaibhav Singh",
+    color: "#1d4ed8",            // launcher, header and customer bubbles
+    greeting:
+      "Hello! I can tell you about Vaibhav Singh's website, chatbot and WhatsApp bot services, or take your details for a quote. How can I help?",
+    quickReplies: ["What services do you offer?", "Get a quote", "See your work", "How does it work?"],
   },
 
   // Facts the bot is allowed to use
   business: {
     description:
-      "Family dental clinic in Leeds offering check-ups, hygiene, whitening, braces and emergency care.",
-    address: "14 Park Row, Leeds LS1 5HD",
-    timezone: "Europe/London",   // lets the bot say whether you are open right now
-    phone: "+44 113 000 0000",
-    email: "hello@sunrisedental.example",
-    website: "https://sunrisedental.example",
-    hours: [
-      "Mon-Fri: 8:30am-6:00pm",
-      "Saturday: 9:00am-1:00pm",
-      "Sunday: closed (emergency line only)",
-    ],
+      "Freelance developer who builds business websites, AI chatbots for websites, and WhatsApp bots for small and growing businesses.",
+    address: "",                 // optional, for example a city or "Remote, worldwide"
+    phone: "",                   // optional
+    email: "",                   // add your business email here so the bot can share it
+    website: "https://github.com/VaibhavSingh557",
+    timezone: "",                // for example "Asia/Kolkata". Lets the bot say if you are available now
+    hours: [],                   // for example ["Mon-Fri: 10:00-18:00"]
     services: [
-      { name: "Check-up and clean", price: "From £65", details: "30 minutes" },
-      { name: "Teeth whitening", price: "£295", details: "In-clinic, about 1 hour" },
-      { name: "Emergency appointment", price: "From £90", details: "Same-day when possible" },
+      { name: "Business website", price: "Quoted per project", details: "Fast, mobile-friendly sites for services and shops" },
+      { name: "Website AI chatbot", price: "Quoted per project", details: "A chat widget that answers customer questions from your own business details" },
+      { name: "WhatsApp business bot", price: "Quoted per project", details: "Answers customer messages on WhatsApp using the same business details" },
+      { name: "Custom tools and automation", price: "Quoted per project", details: "Small custom software to save time on repeated work" },
     ],
     faqs: [
-      { q: "Do you accept new patients?", a: "Yes, we are always welcoming new patients." },
-      { q: "Can I pay by card?", a: "Yes. We accept all major cards and offer 0% payment plans on treatments over £300." },
+      { q: "How do I get a quote?", a: "Tell us what you need through the Leave your details form in this chat. Include your name, a phone number or email, and a short description of the project." },
+      { q: "Can the chatbot be customised for my business?", a: "Yes. The bot is set up with your services, prices, opening hours and FAQs, and it uses your brand color." },
+      { q: "Does the chatbot work on WhatsApp too?", a: "Yes. The same bot can answer customers on your website and on WhatsApp." },
+      { q: "Who pays for the AI usage?", a: "The AI provider bills usage to your own account, so you stay in control of the cost." },
     ],
     policies: [
-      "Appointments can be changed free of charge up to 24 hours before.",
+      "Prices depend on the scope of each project, so every project is quoted individually.",
     ],
   },
 
   // How the bot behaves
   bot: {
-    name: "Sunny",
-    tone: "warm, professional and brief",
-    // Shown to the model as extra rules. Add as many as the client needs.
+    name: "Assistant",
+    tone: "professional, friendly and concise",
+    // Shown to the model as extra rules. Add as many as the business needs.
     rules: [
-      "Never give medical diagnoses. For symptoms, advise booking an appointment.",
-      "For bookings, collect the customer's name, phone number and preferred day, then tell them the team will confirm.",
+      "Never state a price, deadline or guarantee that is not listed above. Say that projects are quoted individually.",
+      "Do not make claims about past clients, results or experience that are not listed above.",
+      "When someone wants a quote or to start a project, ask them to use the Leave your details form, or collect their name, contact details and a short project description.",
     ],
     // What to say when the bot does not know something
-    fallback: "I'm not sure about that one, so please call us or email and the team will help.",
+    fallback:
+      "I don't have that detail, but you can use the Leave your details form and Vaibhav will get back to you.",
   },
 
   limits: {
